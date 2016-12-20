@@ -158,7 +158,13 @@ int main(int argc, char const *argv[])
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
-	
+	vec.pop_back();
+	cout<<"After pop_back your vector size is "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
 	//Testing out copy constructor
 	cout<<"Copy constructor working.!!"<<endl;
 	Vector_Imple vec2(vec);
