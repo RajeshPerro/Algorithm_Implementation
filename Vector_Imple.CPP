@@ -1,6 +1,9 @@
 #include "iostream"
+#include <algorithm>
 
 using namespace std;
+
+#define LEN( a ) (sizeof( a ) / sizeof( a[ 0 ] ))
 
 class Vector_Imple
 {
@@ -19,6 +22,8 @@ class Vector_Imple
 	int size();
 	int operator[](int);
 	int at(int i);
+	void erase_one(int);
+	void erase_seg(int, int);
 
 	//Want to test operator overloading.. :) 
 	Vector_Imple& operator=(const Vector_Imple&);
@@ -138,6 +143,126 @@ Vector_Imple& Vector_Imple::operator=(const Vector_Imple& v)
 return *this;	
 }
 
+void Vector_Imple::erase_one(int position)
+{
+	//int left_size = 0+position;
+	//int right_size = vsize - position;
+	//cout<<"Left Size = "<<left_size<<"  Right Size = "<<right_size<<endl;
+	int left_size = 0, right_size = 0;
+	unsigned ij,ik;
+	if (position > vsize || position < 0)
+	{
+		cout<<"Sorry.!! Invalid Position.\n";
+		return;
+	}
+	else if (position !=0 || position > 0)
+	{
+		// int *nstore_left = new int[left_size];
+		// for (int i = 0; i < position; ++i)
+		// {
+		// 	nstore_left[left_size] = store[i];
+		// 	left_size++;
+			
+		// }
+		
+		// int *nstore_right = new int[right_size];
+		
+		// for (int c = position+1; c < vsize; ++c)
+		// {
+		// 	nstore_right[right_size] = store[c];
+		// 	right_size++;
+			
+		// }
+		
+		
+		// //Checking the copied values
+		// cout<<"Left Array"<<endl;
+		// for (int j = 0; j < left_size; ++j)
+		// {
+		// 	cout<<nstore_left[j]<<" ";
+		// }
+		// cout<<endl<<"Right Array"<<endl;
+		// for (int k = 0; k < right_size; ++k)
+		// {
+		// 	cout<<"position = "<<k<<" & Value = "<<nstore_right[k]<<" ";
+		// }
+		// cout<<endl;
+		// cout<<"Left : "<<left_size<<" Right : "<<right_size<<endl;
+
+		// int* all = new int[ left_size + right_size ];
+		
+		// for (ij = 0; ij < left_size; ++ij)
+		// {
+		//     all[ij] = nstore_left[ij];
+		// }
+		// for (ik = 0; ik < right_size; ik++)
+		// {	//cout<<"ik = "<<ik<<" Value = "<<nstore_right[ik]<<" ";
+		//     all[ij++] = nstore_right[ik];
+		//     cout<<endl;
+		//     //cout<<"ij = "<<ij<<" Value in all = "<<all[ij]<<" ";
+		// }
+		// cout<<"<<<---Elements in all[] --->>>";
+		// for (int i = 0; i <(left_size+right_size); ++i)
+		// {
+		// 	cout<<all[i]<<" ";
+		// }
+		// cout<<endl;
+		// //copy( nstore_left,  nstore_left + left_size, all);
+	 //    //copy( nstore_right, nstore_right+right_size, all + left_size); 
+	
+		// delete []store;
+		// store = all;
+		// delete[] nstore_left;
+		// delete[] nstore_right;
+		// delete[] all;
+		// vsize--;
+
+		int* nstore = new int[maxsize];
+		int j=0;
+		for (int i = 0; i < vsize; i++)
+		{
+			if(i != position)
+			{
+				nstore[j++] = store[i];
+			}
+			else
+			{
+				i=i;
+			}
+
+		}
+		
+		delete[] store;
+		store = nstore;
+		vsize--;
+		
+	}
+	else
+	{
+		int* nstore = new int[maxsize];
+		int j=0;
+		for (int i = 1; i < vsize; i++)
+		{
+			if(i != position)
+			{
+				nstore[j++] = store[i];
+			}
+			else
+			{
+				i=i;
+			}
+
+		}
+		
+		delete[] store;
+		store = nstore;
+		vsize--;
+	}
+}
+
+
+
+
 int main(int argc, char const *argv[])
 {
 	Vector_Imple vec;
@@ -165,6 +290,19 @@ int main(int argc, char const *argv[])
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
+	//Erasing one postion.. :) 
+	int pos;
+	cout<<"which position you want to erase (remember it's start from 0) : ";
+	cin>>pos;
+	vec.erase_one(pos);
+	cout<<"After performing erase() method your vector size is : "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
+
+
 	//Testing out copy constructor
 	cout<<"Copy constructor working.!!"<<endl;
 	Vector_Imple vec2(vec);
