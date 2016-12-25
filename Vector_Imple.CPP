@@ -3,8 +3,6 @@
 
 using namespace std;
 
-#define LEN( a ) (sizeof( a ) / sizeof( a[ 0 ] ))
-
 class Vector_Imple
 {
 
@@ -24,6 +22,7 @@ class Vector_Imple
 	int at(int i);
 	void erase_one(int);
 	void erase_seg(int, int);
+	void resize(int);
 
 	//Want to test operator overloading.. :) 
 	Vector_Imple& operator=(const Vector_Imple&);
@@ -260,7 +259,79 @@ void Vector_Imple::erase_one(int position)
 	}
 }
 
+void Vector_Imple::erase_seg(int first, int last)
+{
+	int* nstore = new int[maxsize];
+	int num_of_elements = (last - first)+1;
+	int j=0;
+	if (first > vsize || last > vsize || first < 0 || last < 0)
+	{
+		cout<<"Sorry.!! Invalid Position.\n";
+		return;
 
+	}
+	else
+	{
+		for (int i = 0; i < vsize; ++i)
+		{
+			if (i != first)
+			{
+				nstore[j++] = store[i];
+			}
+
+			else
+			{
+				if (i != vsize)
+				{
+					i=last;
+				}
+				else
+				{
+					i=vsize;
+				}
+			}
+
+		}
+		delete[] store;
+		store = nstore;
+		for (int no_e = 0; no_e < num_of_elements; no_e++)
+		{
+			vsize--;
+		}
+	}	
+	
+}
+
+void Vector_Imple::resize(int n)
+{
+	int* nstore = new int[n];
+	int resize_num = 0;
+	if (n > vsize || n < 0)
+	{
+		cout<<"Sorry.!! Invalid Position.\n";
+		return;
+	}
+	else if (n == vsize)
+	{
+		cout<<"You vector has already "<<n<<" elements.";
+		return;
+	}
+	else
+	{
+		
+		for (int i = 0; i < n; ++i)
+		{
+			nstore[resize_num++] = store[i];
+		}
+		
+	}
+	delete[] store;
+	store = nstore;
+	for (int no_e = 0; no_e < n; no_e++)
+	{
+		vsize--;
+	}
+}
 
 
 int main(int argc, char const *argv[])
@@ -302,7 +373,27 @@ int main(int argc, char const *argv[])
 	}
 	cout<<endl<<endl;
 
+	int pos1,pos2;
+	cout<<"which positions (segment) you want to erase (remember it's start from 0) : ";
+	cin>>pos1>>pos2;
+	vec.erase_seg(pos1,pos2);
+	cout<<"After performing erase_seg() method your vector size is : "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
 
+	int num;
+	cout<<"Please input your number to resize your vector : ";
+	cin>>num;
+	vec.resize(num);
+	cout<<"After performing resize() method your vector size is : "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
 	//Testing out copy constructor
 	cout<<"Copy constructor working.!!"<<endl;
 	Vector_Imple vec2(vec);
