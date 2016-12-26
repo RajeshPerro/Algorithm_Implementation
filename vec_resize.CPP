@@ -10,7 +10,7 @@ int main ()
 
   myvector.resize(5);
   myvector.resize(8,100);
-  myvector.resize(12);
+  //myvector.resize(12);
 
   std::cout << "myvector contains:";
   for (int i=0;i<myvector.size();i++)

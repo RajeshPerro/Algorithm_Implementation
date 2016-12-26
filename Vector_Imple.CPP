@@ -23,6 +23,7 @@ class Vector_Imple
 	void erase_one(int);
 	void erase_seg(int, int);
 	void resize(int);
+	void resize(int,int);
 
 	//Want to test operator overloading.. :) 
 	Vector_Imple& operator=(const Vector_Imple&);
@@ -304,33 +305,56 @@ void Vector_Imple::erase_seg(int first, int last)
 
 void Vector_Imple::resize(int n)
 {
-	int* nstore = new int[n];
+	int* nstore;	
+	int cp_j=0;
 	int resize_num = 0;
-	if (n > vsize || n < 0)
+	if ( n < 0)
 	{
 		cout<<"Sorry.!! Invalid Position.\n";
 		return;
 	}
+	else if (n > vsize )
+	{
+		
+		nstore = new int[n];
+
+		for (int i = 0; i < vsize; ++i)
+		{
+			nstore[cp_j++] = store[i];
+		}
+
+		for (int no_e = vsize; no_e < n; no_e++)
+		{
+			vsize++;
+		}
+	}
 	else if (n == vsize)
 	{
-		cout<<"You vector has already "<<n<<" elements.";
+		cout<<"Your vector has already "<<n<<" elements.";
 		return;
 	}
 	else
 	{
-		
+		//cout<<"Testing....this condition..";
+		nstore = new int[n];
 		for (int i = 0; i < n; ++i)
 		{
 			nstore[resize_num++] = store[i];
 		}
-		
+		for (int no_e = 0; no_e < n; no_e++)
+		{
+		vsize--;
+		}
 	}
+
 	delete[] store;
 	store = nstore;
-	for (int no_e = 0; no_e < n; no_e++)
-	{
-		vsize--;
-	}
+	
+}
+
+void Vector_Imple::resize(int pos, int num)
+{
+	cout<<"The method is working fine."<<endl;
 }
 
 
@@ -372,7 +396,8 @@ int main(int argc, char const *argv[])
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
-
+	
+	//Testing erase_seg() method.
 	int pos1,pos2;
 	cout<<"which positions (segment) you want to erase (remember it's start from 0) : ";
 	cin>>pos1>>pos2;
@@ -383,17 +408,32 @@ int main(int argc, char const *argv[])
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
+	
 
+	//Testing resize() method with one parameter.
 	int num;
 	cout<<"Please input your number to resize your vector : ";
 	cin>>num;
 	vec.resize(num);
-	cout<<"After performing resize() method your vector size is : "<<vec.size()<<endl;
+	cout<<"After performing resize(with one parameter) method your vector size is : "<<vec.size()<<endl;
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
+
+	//Testing resize() method with two parameters.
+	int posi,num_be_push;
+	cout<<"From which positions you want to resize and which number you wanna push (remember it's start from 0) : ";
+	cin>>posi>>num_be_push;
+	vec.resize(posi,num_be_push);
+	cout<<"After performing resize(with two parameters) method your vector size is : "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
+
 	//Testing out copy constructor
 	cout<<"Copy constructor working.!!"<<endl;
 	Vector_Imple vec2(vec);
