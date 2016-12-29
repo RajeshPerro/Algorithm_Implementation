@@ -306,7 +306,7 @@ void Vector_Imple::erase_seg(int first, int last)
 void Vector_Imple::resize(int n)
 {
 	int* nstore;	
-	int cp_j=0;
+	int cp_j=0,old_vec_size = vsize;
 	int resize_num = 0;
 	if ( n < 0)
 	{
@@ -323,9 +323,10 @@ void Vector_Imple::resize(int n)
 			nstore[cp_j++] = store[i];
 		}
 
-		for (int no_e = vsize; no_e < n; no_e++)
+		for (int no_e = old_vec_size; no_e < n; no_e++)
 		{
 			vsize++;
+			nstore[cp_j++] = 0;
 		}
 	}
 	else if (n == vsize)
@@ -333,7 +334,7 @@ void Vector_Imple::resize(int n)
 		cout<<"Your vector has already "<<n<<" elements.";
 		return;
 	}
-	else
+	else 
 	{
 		//cout<<"Testing....this condition..";
 		nstore = new int[n];
@@ -341,9 +342,9 @@ void Vector_Imple::resize(int n)
 		{
 			nstore[resize_num++] = store[i];
 		}
-		for (int no_e = 0; no_e < n; no_e++)
+		for (int no_e = 0; no_e < (old_vec_size-n) ; no_e++)
 		{
-		vsize--;
+			vsize--;
 		}
 	}
 
@@ -352,9 +353,49 @@ void Vector_Imple::resize(int n)
 	
 }
 
-void Vector_Imple::resize(int pos, int num)
+void Vector_Imple::resize(int n, int num)
 {
-	cout<<"The method is working fine."<<endl;
+	int* nstore;	
+	int cp_j=0,old_vec_size = vsize;
+	int resize_num = 0;
+	if ( n < 0)
+	{
+		
+		return resize(n);
+	}
+	else if (n > vsize )
+	{
+		cout<<"I am working.!\n";
+
+		nstore = new int[n];
+
+		for (int i = 0; i < vsize; ++i)
+		{
+			nstore[cp_j++] = store[i];
+		}
+
+		for (int no_e = old_vec_size; no_e < n; no_e++)
+		{
+			vsize++;
+			// push_back(num);
+			// cout<<"Fucking Number is : " <<num;
+			// // vsize++;
+			 nstore[cp_j++] = num;
+		}
+	}
+	else if (n == vsize)
+	{
+		
+		return resize(n);
+	}
+	else
+	{
+		//cout<<"Testing....this condition..";
+		return resize(n);
+	}
+
+	delete[] store;
+	store = nstore;
 }
 
 
