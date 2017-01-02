@@ -36,7 +36,9 @@ void Shorting::bubbleSort(int arra[], int n )
         arra[i+1] = temp;
         swaaped = true;  
       }
+      //cout<<"Inside: "<<i<<endl;
     }
+    
   }
   for (int i = 0; i < n; ++i)
   {
@@ -164,8 +166,8 @@ int main(int argc, char const *argv[])
   cin >> num;
   for (int i = 0; i < num; ++i)
   {
-    arr[i]=(i*num)+(num-i)*(num+i);
-    //cin>>arr[i];
+    //arr[i]=(i*num)+(num-i)*(num+i);
+    cin>>arr[i];
   }
   cout<<"Array Elements are : ";
   for (int i = 0; i < num; ++i)

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Vector_Imple
+class Vetki
 {
 
 	int vsize, maxsize;
@@ -11,10 +11,10 @@ class Vector_Imple
 	void alloc_new();
 
 	public:
-	Vector_Imple();
-	Vector_Imple(int);
-	Vector_Imple(const Vector_Imple&); //Copy Constructor.
-	~Vector_Imple();
+	Vetki();
+	Vetki(int);
+	Vetki(const Vetki&); //Copy Constructor.
+	~Vetki();
 	void push_back(int);
 	void pop_back();
 	int size();
@@ -26,27 +26,27 @@ class Vector_Imple
 	void resize(int,int);
 
 	//Want to test operator overloading.. :) 
-	Vector_Imple& operator=(const Vector_Imple&);
+	Vetki& operator=(const Vetki&);
 
 	
 	
 };
 /*Simeple Constructor to intialize "Maximum" size, VectorSize and the store array*/
-Vector_Imple::Vector_Imple()
+Vetki::Vetki()
 {
 	maxsize = 20;
 	store = new int[maxsize];
 	vsize = 0;
 
 }
-Vector_Imple::Vector_Imple(int i)
+Vetki::Vetki(int i)
 {
 	maxsize = i;
 	store = new int[maxsize];
 	vsize = 0;
 }
 
-Vector_Imple::Vector_Imple(const Vector_Imple& v )
+Vetki::Vetki(const Vetki& v )
 {
 	
 		maxsize = v.maxsize;
@@ -58,12 +58,12 @@ Vector_Imple::Vector_Imple(const Vector_Imple& v )
 		}
 }
 
-Vector_Imple::~Vector_Imple()
+Vetki::~Vetki()
 {
 	delete[] store;
 }
 
-void Vector_Imple::push_back(int val)
+void Vetki::push_back(int val)
 {
 	if ( vsize+1 > maxsize )
 	{
@@ -75,7 +75,7 @@ void Vector_Imple::push_back(int val)
 
 /* If the size exist then we are just making the size double*/
 
-void Vector_Imple::alloc_new()
+void Vetki::alloc_new()
 {
 	maxsize = vsize * 2;
 	int* nstore = new int[maxsize];
@@ -87,7 +87,7 @@ void Vector_Imple::alloc_new()
 	store = nstore;
 }
 
-void Vector_Imple::pop_back()
+void Vetki::pop_back()
 {
 	vsize--;
 
@@ -105,21 +105,21 @@ void Vector_Imple::pop_back()
 }
 
 
-int Vector_Imple::size()
+int Vetki::size()
 {
 	return vsize;
 }
 
 /*Implemneting array reference*/
 
-int Vector_Imple:: operator[](int val)
+int Vetki:: operator[](int val)
 {
 	return store[val];
 }
 
 /* Returing the posting of array/store */
 
-int Vector_Imple::at(int i)
+int Vetki::at(int i)
 {
 	if ( i < vsize )
 	{
@@ -128,7 +128,7 @@ int Vector_Imple::at(int i)
 	
 }
 
-Vector_Imple& Vector_Imple::operator=(const Vector_Imple& v) 
+Vetki& Vetki::operator=(const Vetki& v) 
 {
 	if ( this != &v)
 	{
@@ -143,7 +143,7 @@ Vector_Imple& Vector_Imple::operator=(const Vector_Imple& v)
 return *this;	
 }
 
-void Vector_Imple::erase_one(int position)
+void Vetki::erase_one(int position)
 {
 	//int left_size = 0+position;
 	//int right_size = vsize - position;
@@ -260,7 +260,7 @@ void Vector_Imple::erase_one(int position)
 	}
 }
 
-void Vector_Imple::erase_seg(int first, int last)
+void Vetki::erase_seg(int first, int last)
 {
 	int* nstore = new int[maxsize];
 	int num_of_elements = (last - first)+1;
@@ -303,7 +303,7 @@ void Vector_Imple::erase_seg(int first, int last)
 	
 }
 
-void Vector_Imple::resize(int n)
+void Vetki::resize(int n)
 {
 	int* nstore;	
 	int cp_j=0,old_vec_size = vsize;
@@ -353,7 +353,7 @@ void Vector_Imple::resize(int n)
 	
 }
 
-void Vector_Imple::resize(int n, int num)
+void Vetki::resize(int n, int num)
 {
 	int* nstore;	
 	int cp_j=0,old_vec_size = vsize;
@@ -401,9 +401,10 @@ void Vector_Imple::resize(int n, int num)
 
 int main(int argc, char const *argv[])
 {
-	Vector_Imple vec;
-	Vector_Imple vec3;
+	Vetki vec;
+	Vetki vec3;
 	int a;
+	cout<<"Please give your input for pushing in vector (input -1 to end) :  ";
 	while(EOF)
 	{
 		cin>> a;
@@ -477,7 +478,7 @@ int main(int argc, char const *argv[])
 
 	//Testing out copy constructor
 	cout<<"Copy constructor working.!!"<<endl;
-	Vector_Imple vec2(vec);
+	Vetki vec2(vec);
 	for (int i = 0; i < vec2.size(); ++i)
 	{
 		cout << vec2[i] <<" ";
