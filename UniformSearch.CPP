@@ -3,7 +3,8 @@
 #include <list>
 #include <queue>          // std::priority_queue
 #include <algorithm>
-#include<stdlib.h>
+#include <stdlib.h>
+
 using namespace std;
 
 struct pQ

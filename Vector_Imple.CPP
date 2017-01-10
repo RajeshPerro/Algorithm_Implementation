@@ -1,5 +1,6 @@
 #include "iostream"
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -94,14 +95,15 @@ void Vetki::pop_back()
 	if (vsize < maxsize/4 && maxsize > 32)
 	{
 		maxsize = maxsize/2;
-		int *nstore = new int[maxsize];
-		for (int i = 0; i < vsize; ++i)
+		
+	}	
+	int *nstore = new int[maxsize];
+	for (int i = 0; i < vsize; ++i)
 		{
 			nstore[i] = store[i];
 		}
-		delete []store;
-		store = nstore;
-	}	
+	delete []store;
+	store = nstore;
 }
 
 
@@ -401,9 +403,11 @@ void Vetki::resize(int n, int num)
 
 int main(int argc, char const *argv[])
 {
+	ofstream testFile;
 	Vetki vec;
 	Vetki vec3;
 	int a;
+
 	cout<<"Please give your input for pushing in vector (input -1 to end) :  ";
 	while(EOF)
 	{
@@ -415,10 +419,19 @@ int main(int argc, char const *argv[])
 		vec.push_back(a);
 	}
 	cout<<"You have enter "<<vec.size() <<" elements.\n";
+
+	//Opening file to read vector data....
+	testFile.open("VectorData.txt");
+
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
+
+		testFile<<vec[i] <<" ";
+
 	}
+	testFile.close();
+
 	cout<<endl<<endl;
 	vec.pop_back();
 	cout<<"After pop_back your vector size is "<<vec.size()<<endl;
