@@ -1,5 +1,0 @@
-Time for 10 elements : 0.012 Millisecond
-Time for 20 elements : 0.052 Millisecond
-Time for 40 elements : 0.085 Millisecond
-Time for 80 elements : 0.363 Millisecond
-Time for 160 elements : 3.112 Millisecond

@@ -1,0 +1,26 @@
+Time for 10 elements in Vetki : 0.004 Millisecond
+Time for 20 elements in Vetki : 0.057 Millisecond
+Time for 30 elements in Vetki : 0.065 Millisecond
+Time for 40 elements in Vetki : 0.07 Millisecond
+Time for 50 elements in Vetki : 0.075 Millisecond
+
+Time for 100 elements in Vetki : 0.012 Millisecond
+Time for 200 elements in Vetki : 0.061 Millisecond
+Time for 300 elements in Vetki : 0.073 Millisecond
+Time for 400 elements in Vetki : 0.085 Millisecond
+Time for 500 elements in Vetki : 0.095 Millisecond
+
+
+
+Time for 10 elements in StdVector : 0.007 Millisecond
+Time for 20 elements in StdVector : 0.047 Millisecond
+Time for 30 elements in StdVector : 0.053 Millisecond
+Time for 40 elements in StdVector : 0.058 Millisecond
+Time for 50 elements in StdVector : 0.062 Millisecond
+
+
+Time for 100 elements in StdVector : 0.016 Millisecond
+Time for 200 elements in StdVector : 0.066 Millisecond
+Time for 300 elements in StdVector : 0.083 Millisecond
+Time for 400 elements in StdVector : 0.095 Millisecond
+Time for 500 elements in StdVector : 0.106 Millisecond

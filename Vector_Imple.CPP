@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <sys/time.h>
+#include "vector"
 
 using namespace std;
 
@@ -415,107 +416,261 @@ int main(int argc, char const *argv[])
 	ofstream testFile;
 	Vetki vec;
 	Vetki vec3;
+
+	vector<int> stvec;
+
 	int a=1,how_many;
 	double secs=0;
-	cout<<"Please enter starting number of elements :  ";
-	cin>>how_many;
+	//cout<<"Please enter starting number of elements :  ";
+	//cin>>how_many;
 	/*---START PUSH BACK in VECTOR---*/
 	testFile.open("VectorData.txt",ofstream::out | std::ofstream::app);
 	timestamp_t t0 = get_timestamp();
-	while(a<=how_many)
+
+	/*-------Testing My VECTOR push_back()-------*/
+
+
+	while(a<=50)
 	{
-		// cin>> a;
-		// if (a == -1)
-		// {
-		// 	break;
-		// }
+		
 		vec.push_back(a);
 		timestamp_t t1 = get_timestamp();
-  		secs+= (t1 - t0) / 1000000.0;
-
+		if (a==10)
+		{
+			
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 10 elements in Vetki : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (a==20)
+		{
+			//timestamp_t t2 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 20 elements in Vetki : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (a==30)
+		{
+			//timestamp_t t3 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 30 elements in Vetki : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (a==40)
+		{
+			//timestamp_t t4 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 40 elements in Vetki : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (a==50)
+		{
+			//timestamp_t t5 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 50 elements in Vetki : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
 		a++;
 	}
-	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
-	int b=1;
-	how_many = how_many*2;
-	secs=0;
-	timestamp_t t2 = get_timestamp();
-	while(b<=how_many)
+	testFile<<endl<<endl;
+	/*-------Testing Standard VECTOR push_back()-------*/
+	int b = 1;
+	while(b<=50)
 	{
-		// cin>> a;
-		// if (a == -1)
-		// {
-		// 	break;
-		// }
-		vec.push_back(b);
-		timestamp_t t3 = get_timestamp();
-  		secs+= (t3 - t2) / 1000000.0;
-
+		
+		stvec.push_back(b);
+		timestamp_t t1 = get_timestamp();
+		if (b==10)
+		{
+			
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 10 elements in StdVector : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (b==20)
+		{
+			//timestamp_t t2 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 20 elements in StdVector : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (b==30)
+		{
+			//timestamp_t t3 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 30 elements in StdVector : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (b==40)
+		{
+			//timestamp_t t4 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 40 elements in StdVector : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
+		if (b==50)
+		{
+			//timestamp_t t5 = get_timestamp();
+			secs+= (t1 - t0) / 1000000.0;
+			testFile<<"Time for 50 elements in StdVector : "<<secs*1000 <<" Millisecond"<<endl;
+			secs=0;
+		}
 		b++;
 	}
-	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+	testFile<<endl<<endl;
+	// while(a<=how_many)
+	// {
+	// 	// cin>> a;
+	// 	// if (a == -1)
+	// 	// {
+	// 	// 	break;
+	// 	// }
+	// 	vec.push_back(a);
+	// 	timestamp_t t1 = get_timestamp();
+ //  		secs+= (t1 - t0) / 1000000.0;
+
+	// 	a++;
+	// }
+	// testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+	// int b=1;
+	// how_many = how_many*2;
+	// secs=0;
+	// timestamp_t t2 = get_timestamp();
+	// while(b<=how_many)
+	// {
+	// 	// cin>> a;
+	// 	// if (a == -1)
+	// 	// {
+	// 	// 	break;
+	// 	// }
+	// 	vec.push_back(b);
+	// 	timestamp_t t3 = get_timestamp();
+ //  		secs+= (t3 - t2) / 1000000.0;
+
+	// 	b++;
+	// }
+	// testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
 	
-	int c=1;
-	how_many = how_many*2;
-	secs=0;
-	timestamp_t t4 = get_timestamp();
-	while(c<=how_many)
-	{
-		// cin>> a;
-		// if (a == -1)
-		// {
-		// 	break;
-		// }
-		vec.push_back(c);
-		timestamp_t t5 = get_timestamp();
-  		secs+= (t5 - t4) / 1000000.0;
+	// int c=1;
+	// how_many = how_many*2;
+	// secs=0;
+	// timestamp_t t4 = get_timestamp();
+	// while(c<=how_many)
+	// {
+	// 	// cin>> a;
+	// 	// if (a == -1)
+	// 	// {
+	// 	// 	break;
+	// 	// }
+	// 	vec.push_back(c);
+	// 	timestamp_t t5 = get_timestamp();
+ //  		secs+= (t5 - t4) / 1000000.0;
 
-		c++;
-	}
-	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+	// 	c++;
+	// }
+	// testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
 
-	int d=1;
-	how_many = how_many*2;
-	secs=0;
-	timestamp_t t6 = get_timestamp();
-	while(d<=how_many)
-	{
-		// cin>> a;
-		// if (a == -1)
-		// {
-		// 	break;
-		// }
-		vec.push_back(d);
-		timestamp_t t7 = get_timestamp();
-  		secs+= (t7 - t6) / 1000000.0;
+	// int d=1;
+	// how_many = how_many*2;
+	// secs=0;
+	// timestamp_t t6 = get_timestamp();
+	// while(d<=how_many)
+	// {
+	// 	// cin>> a;
+	// 	// if (a == -1)
+	// 	// {
+	// 	// 	break;
+	// 	// }
+	// 	vec.push_back(d);
+	// 	timestamp_t t7 = get_timestamp();
+ //  		secs+= (t7 - t6) / 1000000.0;
 
-		d++;
-	}
-	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
+	// 	d++;
+	// }
+	// testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
 
-	int e=1;
-	how_many = how_many*2;
-	secs=0;
-	timestamp_t t8 = get_timestamp();
-	while(e<=how_many)
-	{
-		// cin>> a;
-		// if (a == -1)
-		// {
-		// 	break;
-		// }
-		vec.push_back(e);
-		timestamp_t t9 = get_timestamp();
-  		secs+= (t9 - t8) / 1000000.0;
+	// int e=1;
+	// how_many = how_many*2;
+	// secs=0;
+	// timestamp_t t8 = get_timestamp();
+	// while(e<=how_many)
+	// {
+	// 	// cin>> a;
+	// 	// if (a == -1)
+	// 	// {
+	// 	// 	break;
+	// 	// }
+	// 	vec.push_back(e);
+	// 	timestamp_t t9 = get_timestamp();
+ //  		secs+= (t9 - t8) / 1000000.0;
 
-		e++;
-	}
-	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
+	// 	e++;
+	// }
+	// testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
 	
-	testFile.close();
+	
 	
 	/*---End of VECTOR INPUT---*/
 
+	/*------Operation for Standard VECTOR START------*/
+	cout<<"You have enter "<<stvec.size() <<" elements.\n";
+
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	cout<<endl<<endl;	
+
+	//POP BACK in standard VECTOR
+	secs = 0;
+	timestamp_t t_s_2 = get_timestamp();
+	stvec.pop_back();
+	timestamp_t t_s_3 = get_timestamp();
+	secs+= (t_s_3 - t_s_2) / 1000000.0;
+	testFile<<"Time for pop_back() in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+	
+	cout<<"After pop_back  Standard vector size is "<<stvec.size()<<endl;
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	testFile<<endl<<endl;
+	cout<<endl<<endl;
+
+	//erase methos in standard VECTOR
+	int pos_std,pos2_std;
+	cout<<"which position you want to erase in Standard vector : ";
+	cin>>pos_std;
+	
+	secs = 0;
+	timestamp_t t_s_4 = get_timestamp();
+	
+	stvec.erase (stvec.begin()+pos_std); //erase method calling....
+	
+	timestamp_t t_s_5 = get_timestamp();
+	secs+= (t_s_5 - t_s_4) / 1000000.0;
+	testFile<<"Time for erase() in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+
+	cout<<"which position (segment) you want to erase Standard vector : ";
+	cin>>pos2_std;
+
+	secs = 0;
+	timestamp_t t_s_6 = get_timestamp();
+	
+	stvec.erase (myvector.begin(),myvector.begin()+pos2_std);
+	
+	timestamp_t t_s_7 = get_timestamp();
+	secs+= (t_s_7 - t_s_6) / 1000000.0;
+	testFile<<"Time for erase(segment) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+	
+
+	cout<<"After erase() Standard vector size is "<<stvec.size()<<endl;
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	testFile<<endl<<endl;
+	/*------Operation for Standard VECTOR END------*/
 
 	cout<<"You have enter "<<vec.size() <<" elements.\n";
 
@@ -525,31 +680,59 @@ int main(int argc, char const *argv[])
 	}	
 
 	cout<<endl<<endl;
+
+	//POP BACK in Vetki 
+	secs = 0;
+	timestamp_t t_m_1 = get_timestamp();
 	vec.pop_back();
-	cout<<"After pop_back your vector size is "<<vec.size()<<endl;
+	timestamp_t t_m_2 = get_timestamp();
+	secs+= (t_m_2 - t_m_1) / 1000000.0;
+	testFile<<"Time for pop_back() in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
+
+	cout<<"After pop_back Vetki size is "<<vec.size()<<endl;
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
 	}
 	cout<<endl<<endl;
-	//Erasing one postion.. :) 
+
+
+	//erase methos in VETKI
+	
 	int pos;
-	cout<<"which position you want to erase (remember it's start from 0) : ";
+	cout<<"which position you want to erase in Vetki (remember it's start from 0) : ";
 	cin>>pos;
+	
+	secs = 0;
+	timestamp_t t_m_3 = get_timestamp();
+
 	vec.erase_one(pos);
-	cout<<"After performing erase() method your vector size is : "<<vec.size()<<endl;
-	for (int i = 0; i < vec.size(); ++i)
-	{
-		cout << vec[i] <<" ";
-	}
-	cout<<endl<<endl;
+	
+	timestamp_t t_m_4 = get_timestamp();
+	secs+= (t_m_4 - t_m_3) / 1000000.0;
+	testFile<<"Time for erase() in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
+	
+	// cout<<"After performing erase() method your vector size is : "<<vec.size()<<endl;
+	// for (int i = 0; i < vec.size(); ++i)
+	// {
+	// 	cout << vec[i] <<" ";
+	// }
+	// cout<<endl<<endl;
 	
 	//Testing erase_seg() method.
 	int pos1,pos2;
-	cout<<"which positions (segment) you want to erase (remember it's start from 0) : ";
+	cout<<"which positions (segment) in Vetki you want to erase (remember it's start from 0) : ";
 	cin>>pos1>>pos2;
+	secs = 0;
+	timestamp_t t_m_5 = get_timestamp();
+
 	vec.erase_seg(pos1,pos2);
-	cout<<"After performing erase_seg() method your vector size is : "<<vec.size()<<endl;
+
+	timestamp_t t_m_6 = get_timestamp();
+	secs+= (t_m_6 - t_m_5) / 1000000.0;
+	testFile<<"Time for erase(segment) in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
+	
+	cout<<"After performing erase() method Vetki size is : "<<vec.size()<<endl;
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
@@ -597,6 +780,9 @@ int main(int argc, char const *argv[])
 	{
 		cout << vec3[i] <<" ";
 	}
+	
+
 	cout<<endl;
+	testFile.close();
 	return 0;
 }
