@@ -1,6 +1,7 @@
 #include "iostream"
 #include <algorithm>
 #include <fstream>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -400,37 +401,128 @@ void Vetki::resize(int n, int num)
 	store = nstore;
 }
 
+typedef unsigned long long timestamp_t;
+  static timestamp_t
+    get_timestamp ()
+    {
+      struct timeval now;
+      gettimeofday (&now, NULL);
+      return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000000;
+    }
 
 int main(int argc, char const *argv[])
 {
 	ofstream testFile;
 	Vetki vec;
 	Vetki vec3;
-	int a;
-
-	cout<<"Please give your input for pushing in vector (input -1 to end) :  ";
-	while(EOF)
+	int a=1,how_many;
+	double secs=0;
+	cout<<"Please enter starting number of elements :  ";
+	cin>>how_many;
+	/*---START PUSH BACK in VECTOR---*/
+	testFile.open("VectorData.txt",ofstream::out | std::ofstream::app);
+	timestamp_t t0 = get_timestamp();
+	while(a<=how_many)
 	{
-		cin>> a;
-		if (a == -1)
-		{
-			break;
-		}
+		// cin>> a;
+		// if (a == -1)
+		// {
+		// 	break;
+		// }
 		vec.push_back(a);
-	}
-	cout<<"You have enter "<<vec.size() <<" elements.\n";
+		timestamp_t t1 = get_timestamp();
+  		secs+= (t1 - t0) / 1000000.0;
 
-	//Opening file to read vector data....
-	testFile.open("VectorData.txt");
+		a++;
+	}
+	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+	int b=1;
+	how_many = how_many*2;
+	secs=0;
+	timestamp_t t2 = get_timestamp();
+	while(b<=how_many)
+	{
+		// cin>> a;
+		// if (a == -1)
+		// {
+		// 	break;
+		// }
+		vec.push_back(b);
+		timestamp_t t3 = get_timestamp();
+  		secs+= (t3 - t2) / 1000000.0;
+
+		b++;
+	}
+	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+	
+	int c=1;
+	how_many = how_many*2;
+	secs=0;
+	timestamp_t t4 = get_timestamp();
+	while(c<=how_many)
+	{
+		// cin>> a;
+		// if (a == -1)
+		// {
+		// 	break;
+		// }
+		vec.push_back(c);
+		timestamp_t t5 = get_timestamp();
+  		secs+= (t5 - t4) / 1000000.0;
+
+		c++;
+	}
+	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000 <<" Millisecond"<<endl;
+
+	int d=1;
+	how_many = how_many*2;
+	secs=0;
+	timestamp_t t6 = get_timestamp();
+	while(d<=how_many)
+	{
+		// cin>> a;
+		// if (a == -1)
+		// {
+		// 	break;
+		// }
+		vec.push_back(d);
+		timestamp_t t7 = get_timestamp();
+  		secs+= (t7 - t6) / 1000000.0;
+
+		d++;
+	}
+	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
+
+	int e=1;
+	how_many = how_many*2;
+	secs=0;
+	timestamp_t t8 = get_timestamp();
+	while(e<=how_many)
+	{
+		// cin>> a;
+		// if (a == -1)
+		// {
+		// 	break;
+		// }
+		vec.push_back(e);
+		timestamp_t t9 = get_timestamp();
+  		secs+= (t9 - t8) / 1000000.0;
+
+		e++;
+	}
+	testFile<<"Time for "<<how_many<<" elements : "<<secs*1000<<" Millisecond"<<endl;
+	
+	testFile.close();
+	
+	/*---End of VECTOR INPUT---*/
+
+
+	cout<<"You have enter "<<vec.size() <<" elements.\n";
 
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
-
-		testFile<<vec[i] <<" ";
-
-	}
-	testFile.close();
+	}	
 
 	cout<<endl<<endl;
 	vec.pop_back();

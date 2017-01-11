@@ -14,19 +14,23 @@ typedef unsigned long long timestamp_t;
 
 int main () 
 {
-  
+  double secs=0;
+  int i =1;
 
   ofstream myfile;
   myfile.open ("example.txt");
   timestamp_t t0 = get_timestamp();
-  
-  myfile << "Writing this to a file.\n";
+  while(i<=500)
+  {
+  	myfile << "Writing this to a file.\n";
+  	timestamp_t t1 = get_timestamp();
+  	secs+= (t1 - t0) / 1000000.0;
+  	i++;
+  }
   myfile.close();
   
-  timestamp_t t1 = get_timestamp();
-  double secs = (t1 - t0) / 1000000.0;
 
-  cout<<"Required Time is : "<<secs<<endl;
+  cout<<"Required Time is : "<<secs*1000<<endl;
   return 0;
 }
 
