@@ -705,7 +705,7 @@ int main(int argc, char const *argv[])
 	stvec.resize(posi1,num_be_push1);
 	timestamp_t t_s_11 = get_timestamp();
 	secs+= (t_s_11 - t_s_10) / 1000000.0;
-	testFile<<"Time for resize(one param) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+	testFile<<"Time for resize(two params) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
 
 	cout<<"After resize(two params) Standard vector size is "<<stvec.size()<<endl;
 	for (int i = 0; i < stvec.size(); ++i)

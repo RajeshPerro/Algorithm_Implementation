@@ -24,3 +24,23 @@ Time for 200 elements in StdVector : 0.066 Millisecond
 Time for 300 elements in StdVector : 0.083 Millisecond
 Time for 400 elements in StdVector : 0.095 Millisecond
 Time for 500 elements in StdVector : 0.106 Millisecond
+
+
+Time for pop_back() in  StdVector : 		0.001 Millisecond 	Time for pop_back() in  Vetki : 		0.004 Millisecond
+
+Time for erase() in  StdVector : 			0.017 Millisecond	Time for erase() in  Vetki : 			0.028 Millisecond
+
+Time for erase(segment) in  StdVector : 	0.001 Millisecond	Time for erase(segment) in  Vetki : 	0.032 Millisecond
+
+Time for resize(one param) in  StdVector : 	0 Millisecond		Time for resize(one param) in  Vetki : 	0.004 Millisecond
+
+Time for resize(two params) in  StdVector : 0.001 Millisecond	Time for resize(two params) in  Vetki : 0.011 Millisecond
+
+
+
+
+
+
+
+
+
