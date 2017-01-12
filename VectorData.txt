@@ -1,0 +1,29 @@
+Time for 10 elements in Vetki : 0.001 Millisecond
+Time for 20 elements in Vetki : 0.05 Millisecond
+Time for 30 elements in Vetki : 0.057 Millisecond
+Time for 40 elements in Vetki : 0.062 Millisecond
+Time for 50 elements in Vetki : 0.067 Millisecond
+
+
+Time for 10 elements in StdVector : 0.084 Millisecond
+Time for 20 elements in StdVector : 0.09 Millisecond
+Time for 30 elements in StdVector : 0.095 Millisecond
+Time for 40 elements in StdVector : 0.1 Millisecond
+Time for 50 elements in StdVector : 0.104 Millisecond
+
+
+Time for pop_back() in  StdVector : 0.001 Millisecond
+Time for erase() in  StdVector : 0.017 Millisecond
+Time for erase(segment) in  StdVector : 0.001 Millisecond
+Time for resize(one param) in  StdVector : 0.001 Millisecond
+Time for resize(one param) in  StdVector : 0 Millisecond
+
+
+Time for pop_back() in  Vetki : 0.004 Millisecond
+Time for erase() in  Vetki : 0.028 Millisecond
+Time for erase(segment) in  Vetki : 0.032 Millisecond
+
+Time for resize(one param) in  Vetki : 0.004 Millisecond
+
+Time for resize(two params) in  Vetki : 0.011 Millisecond
+

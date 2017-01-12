@@ -634,7 +634,6 @@ int main(int argc, char const *argv[])
 	{
 		cout << stvec[i] <<" ";
 	}
-	testFile<<endl<<endl;
 	cout<<endl<<endl;
 
 	//erase methos in standard VECTOR
@@ -651,25 +650,71 @@ int main(int argc, char const *argv[])
 	secs+= (t_s_5 - t_s_4) / 1000000.0;
 	testFile<<"Time for erase() in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
 
+	cout<<"After erase(one) element Standard vector size is "<<stvec.size()<<endl;
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	cout<<endl;
+
 	cout<<"which position (segment) you want to erase Standard vector : ";
 	cin>>pos2_std;
 
 	secs = 0;
 	timestamp_t t_s_6 = get_timestamp();
 	
-	stvec.erase (myvector.begin(),myvector.begin()+pos2_std);
+	stvec.erase (stvec.begin(),stvec.begin()+pos2_std);
 	
 	timestamp_t t_s_7 = get_timestamp();
 	secs+= (t_s_7 - t_s_6) / 1000000.0;
 	testFile<<"Time for erase(segment) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
 	
-
-	cout<<"After erase() Standard vector size is "<<stvec.size()<<endl;
+	cout<<"After erase(segment) element Standard vector size is "<<stvec.size()<<endl;
 	for (int i = 0; i < stvec.size(); ++i)
 	{
 		cout << stvec[i] <<" ";
 	}
+	cout<<endl;
+
+	//resize() method with one parameter in standard VECTOR.
+	int num1;
+	cout<<"Please input your number to resize Standard Vector : ";
+	cin>>num1;
+	secs = 0;
+	timestamp_t t_s_8 = get_timestamp();
+
+	stvec.resize(num1);
+
+	timestamp_t t_s_9 = get_timestamp();
+	secs+= (t_s_9 - t_s_8) / 1000000.0;
+	testFile<<"Time for resize(one param) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+
+	cout<<"After resize(one param) Standard vector size is "<<stvec.size()<<endl;
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	cout<<endl;
+	//resize() method with two parameters in standard VECTOR.
+	int posi1,num_be_push1;
+	cout<<"From which positions you want to resize and which number you wanna push : ";
+	cin>>posi1>>num_be_push1;
+
+	secs = 0;
+	timestamp_t t_s_10 = get_timestamp();
+	stvec.resize(posi1,num_be_push1);
+	timestamp_t t_s_11 = get_timestamp();
+	secs+= (t_s_11 - t_s_10) / 1000000.0;
+	testFile<<"Time for resize(one param) in  StdVector : "<<secs*1000<<" Millisecond"<<endl;
+
+	cout<<"After resize(two params) Standard vector size is "<<stvec.size()<<endl;
+	for (int i = 0; i < stvec.size(); ++i)
+	{
+		cout << stvec[i] <<" ";
+	}
+	cout<<endl;
 	testFile<<endl<<endl;
+
 	/*------Operation for Standard VECTOR END------*/
 
 	cout<<"You have enter "<<vec.size() <<" elements.\n";
@@ -712,14 +757,14 @@ int main(int argc, char const *argv[])
 	secs+= (t_m_4 - t_m_3) / 1000000.0;
 	testFile<<"Time for erase() in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
 	
-	// cout<<"After performing erase() method your vector size is : "<<vec.size()<<endl;
-	// for (int i = 0; i < vec.size(); ++i)
-	// {
-	// 	cout << vec[i] <<" ";
-	// }
-	// cout<<endl<<endl;
+	cout<<"After performing erase() method Vetki size is : "<<vec.size()<<endl;
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		cout << vec[i] <<" ";
+	}
+	cout<<endl<<endl;
 	
-	//Testing erase_seg() method.
+	//erase_seg() method.
 	int pos1,pos2;
 	cout<<"which positions (segment) in Vetki you want to erase (remember it's start from 0) : ";
 	cin>>pos1>>pos2;
@@ -737,15 +782,24 @@ int main(int argc, char const *argv[])
 	{
 		cout << vec[i] <<" ";
 	}
+	
 	cout<<endl<<endl;
 	
 
-	//Testing resize() method with one parameter.
+	//resize() method with one parameter.
 	int num;
-	cout<<"Please input your number to resize your vector : ";
+	cout<<"Please input your number to resize Vetki : ";
 	cin>>num;
-	vec.resize(num);
-	cout<<"After performing resize(with one parameter) method your vector size is : "<<vec.size()<<endl;
+	secs = 0;
+	timestamp_t t_m_7 = get_timestamp();
+
+	vec.resize(num); //resize method for Vetki
+
+	timestamp_t t_m_8 = get_timestamp();
+	secs+= (t_m_8 - t_m_7) / 1000000.0;
+	testFile<<"Time for resize(one param) in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
+
+	cout<<"After performing resize(with one parameter) method Vetki size is : "<<vec.size()<<endl;
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		cout << vec[i] <<" ";
@@ -756,7 +810,16 @@ int main(int argc, char const *argv[])
 	int posi,num_be_push;
 	cout<<"From which positions you want to resize and which number you wanna push (remember it's start from 0) : ";
 	cin>>posi>>num_be_push;
+
+	secs = 0;
+	timestamp_t t_m_9 = get_timestamp();
+
 	vec.resize(posi,num_be_push);
+
+	timestamp_t t_m_10 = get_timestamp();
+	secs+= (t_m_10 - t_m_9) / 1000000.0;
+	testFile<<"Time for resize(two params) in  Vetki : "<<secs*1000<<" Millisecond"<<endl;
+
 	cout<<"After performing resize(with two parameters) method your vector size is : "<<vec.size()<<endl;
 	for (int i = 0; i < vec.size(); ++i)
 	{
@@ -780,9 +843,10 @@ int main(int argc, char const *argv[])
 	{
 		cout << vec3[i] <<" ";
 	}
-	
-
 	cout<<endl;
+	cout<<"*************************************************************************************************"<<endl;
+	cout<<"Please Check your Program Directory you will find VectorData.txt that contains all operation time."<<endl;
+	cout<<"*************************************************************************************************";
 	testFile.close();
 	return 0;
 }
