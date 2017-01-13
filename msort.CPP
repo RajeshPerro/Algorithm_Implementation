@@ -1,24 +1,46 @@
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+
+#include "iostream"
+
+using namespace std;
 
 void merge(int a[],int low,int mid,int high);
 void mergesort(int a[], int low, int high);
+
+int* genRandomArray(int size)
+{
+  int *array;
+  int SIZE = size+10;
+  array = new int[SIZE];
+  srand(time(NULL));
+  for(int i=0;i<size;i++)
+    {
+      array[i]=(rand()%1000); //Generating random number and storing in array
+    }
+return array;   
+}    
+
 int main()
 {
-	int p,a[5];
-	printf("\n\tEnter The Values into ARRAY 5");
-	for( p=0;p<5;p++)
-	{
+	int p,a;
+	int *arr;
+	cout<<"Enter the number : ";
+	cin>>a;
+
+	// printf("\n\tEnter The Values into ARRAY 5");
+	// for( p=0;p<5;p++)
+	// {
 		
-		scanf("%d",&a[p]);
-	}
-	mergesort(a, 0, 5-1);
+	// 	scanf("%d",&a[p]);
+	// }
+	arr = genRandomArray(a);
+	mergesort(arr, 0, a-1);
 	printf("\nThe Sorting List is: \n");
-	for(p=0;p<5;p++)
+	for(p=0;p<a;p++)
 	{
-        printf("%d ",a[p]);
+        printf("%d ",arr[p]);
 	}
-	getch();
+	
 	return 0;
 }
 

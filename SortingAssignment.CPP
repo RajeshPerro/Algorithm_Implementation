@@ -1,4 +1,6 @@
 #include "iostream"
+#include "fstream"
+#include "sys/time.h"
 
 using namespace std;
 
@@ -12,8 +14,8 @@ public:
   
   void insertionSort(int*, int);
 
-  void merge(int*, int, int, int );
-  void mergeSort(int*, int, int);
+  void mergeSort(int*,int,int);
+  void merge(int*,int,int,int);
 
   void quickSort(int*, int, int);
   int partition(int*, int, int);
@@ -65,57 +67,61 @@ void Shorting::insertionSort(int arra[], int n)
   }
 }
 
-void Shorting::merge(int a[],int low,int mid,int high)
+void Shorting::merge(int*a,int l,int m,int u)
 {
-  
-    if(high>low)
+  int i,j,s1=m-l+1, s2=u-m,k;
+  int *la, *ra;
+  la=(int*)calloc(s1,sizeof(int));
+  ra=(int*)calloc(s2,sizeof(int));
+  for(i=0;i<s1;i++)
+  {
+    la[i]=a[l+i];
+  }
+  for(i=0;i<s2;i++)
+  {
+    ra[i]=a[m+1+i];
+  }
+  for(i=0,j=0,k=l;k<=u && i<s1 && j<s2;k++)
+  {
+    if(la[i] <= ra[j])
+   {
+     a[k]=la[i];i++;
+   }
+    else
     {
-      mid=(low+high)/2;
-      mergeSort(a,low,mid);
-      mergeSort(a,mid+1,high);
-      merge(a,low,mid,high);
+   a[k]=ra[j];j++;
     }
-  return;
+  }
+  if(i>=s1)
+  {
+   while(j<s2)
+   {
+  a[k]=ra[j];
+    j++;
+    k++;
+   }
+  }
+  if(j>=s2)
+  {
+   while(i<s1)
+   {
+  a[k]=la[i];
+    i++;
+    k++;
+   }
+  }
+
 }
-void Shorting::mergeSort(int a[], int low, int high)
+void Shorting::mergeSort(int* a,int l,int u)
 {
-  int i, j, k;
-  int b[high];
-    i=low;
-    j=mid+1;
-    k=low;
-    while((i<=mid)&&(j<=high))
+  int m;
+  if(l<u)
   {
-        if(a[i]<a[j])
-    {
-            b[k]=a[i];
-            k++;
-            i++;
-    }
-        else
-    {
-            b[k]=a[j];
-            k++;
-            j++;
-    }
+   m=(l+u)/2;
+   mergeSort(a,l,m);
+   mergeSort(a,m+1,u);
+   merge(a,l,m,u);
   }
-    while(i<=mid)
-  {
-        b[k]=a[i];
-        k++;
-        i++;
-  }
-    while(j<=high)
-  {
-        b[k]=a[j];
-        k++;
-        j++;
-  }
-    for(i=low;i<k;i++)
-  {
-        a[i]=b[i];
-  }
-  return;
 }
 
 void Shorting::quickSort(int arra[], int p, int r )
@@ -157,47 +163,126 @@ int Shorting::partition(int arra[],int p,int r)
 return j;
 }
 
+typedef unsigned long long timestamp_t;
+  static timestamp_t
+    get_timestamp ()
+    {
+      struct timeval now;
+      gettimeofday (&now, NULL);
+      return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000000;
+    }
+int* genRandomArray(int size)
+{
+  int *array;
+  int SIZE = size+10;
+  array = new int[SIZE];
+  srand(time(NULL));
+  for(int i=0;i<size;i++)
+    {
+      array[i]=(rand()%1000); //Generating random number and storing in array
+    }
+return array;   
+}    
 
 int main(int argc, char const *argv[])
 {
-  int num, arr[100];
-  Shorting sort;
-  cout<<"Enter the number of elements : ";
-  cin >> num;
-  for (int i = 0; i < num; ++i)
-  {
-    //arr[i]=(i*num)+(num-i)*(num+i);
-    cin>>arr[i];
-  }
-  cout<<"Array Elements are : ";
-  for (int i = 0; i < num; ++i)
-  {
-    cout<<arr[i]<<" ";
-  }
-  cout<<endl;
-  
-  cout<<"After Performing BubbleSort : ";
-  sort.bubbleSort(arr,num);
-  cout<<endl;
-  
-  cout<<"After Performing InsertionSort : ";
-  sort.insertionSort(arr,num);
-  cout<<endl;
+    ofstream testFile;
+    double secs;
+    int num;
+    int *arrBub,*arrIns,*arrMer,*arrQui;
+    Shorting sort;
+    cout<<"Enter the number of elements you wnat to sort (numbers will be generated randomly): ";
+    cin >> num;
 
-  cout<<"After Performing MergeSort : ";
-  sort.mergeSort(arr, 0, num-1);
-  for (int i = 0; i < num; ++i)
-  {
-    cout<<arr[i]<<" ";
-  }
-  cout<<endl;
-  
-  cout<<"After Performing QuickSort : ";
-  sort.quickSort(arr, 0, num-1);
-  for (int i = 0; i < num; ++i)
-  {
-    cout<<arr[i]<<" ";
-  }
-  cout<<endl;
+    testFile.open("SortingFile.txt",ofstream::out | std::ofstream::app);
+    
+    cout<<"Unsorted List : ";
+    arrBub = genRandomArray(num);
+
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrBub[i]<<" ";
+    }
+    cout<<endl;
+
+    /*-->>>>>>>BUBBLE SORT<<<<<<<----*/
+    cout<<"After Performing BubbleSort : ";
+    secs=0;
+    timestamp_t t0 = get_timestamp();
+    
+    sort.bubbleSort(arrBub,num);
+    
+    timestamp_t t1 = get_timestamp();
+    secs+= (t1 - t0) / 1000000.0;
+    testFile<<"Time for Sorting "<<num <<" elements in BubbleSort : "<<secs*1000 <<" Millisecond"<<endl;
+    cout<<endl;
+    /*-->>>>>>>INSERTION SORT<<<<<<<----*/
+    cout<<endl<<"Unsorted List : ";
+    arrIns = genRandomArray(num);
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrIns[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"After Performing InsertionSort : ";
+    secs=0;
+    timestamp_t t2 = get_timestamp();
+    
+    sort.insertionSort(arrIns,num);
+
+    timestamp_t t3 = get_timestamp();
+    secs+= (t3 - t2) / 1000000.0;
+    testFile<<"Time for Sorting "<<num <<" elements in InsertionSort : "<<secs*1000 <<" Millisecond"<<endl;
+    cout<<endl;
+    /*-->>>>>>>MERGE SORT<<<<<<<----*/
+    cout<<endl<<"Unsorted List : ";
+    arrMer = genRandomArray(num);
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrMer[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"After Performing MergeSort : ";
+    secs=0;
+    timestamp_t t4 = get_timestamp();
+
+    sort.mergeSort(arrMer, 0, num-1);
+    
+    timestamp_t t5 = get_timestamp();
+    secs+= (t5 - t4) / 1000000.0;
+    testFile<<"Time for Sorting "<<num <<" elements in MergeSort : "<<secs*1000 <<" Millisecond"<<endl;
+    
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrMer[i]<<" ";
+    }
+    cout<<endl<<endl;
+    /*-->>>>>>>QUICK SORT<<<<<<<----*/
+    cout<<endl<<"Unsorted List : ";
+    arrQui = genRandomArray(num);
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrQui[i]<<" ";
+    }
+    cout<<endl;
+
+    cout<<"After Performing QuickSort : ";
+    secs=0;
+    timestamp_t t6 = get_timestamp();
+    
+    sort.quickSort(arrQui, 0, num-1);
+    
+    timestamp_t t7 = get_timestamp();
+    secs+= (t7 - t6) / 1000000.0;
+    testFile<<"Time for Sorting "<<num <<" elements in QuickSort : "<<secs*1000 <<" Millisecond"<<endl;
+    for (int i = 0; i < num; ++i)
+    {
+      cout<<arrQui[i]<<" ";
+    }
+    cout<<endl<<endl;
+    cout<<"*************************************************************************************************"<<endl;
+    cout<<"Please Check your Program Directory you will find SortingFile.txt that contains all operation time."<<endl;
+    cout<<"*************************************************************************************************"<<endl;;
+  testFile.close();
   return 0;
 }
