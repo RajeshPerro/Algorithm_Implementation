@@ -1,1 +1,60 @@
+Time for Sorting 10 elements in BubbleSort : 0.011 Millisecond
+Time for Sorting 10 elements in InsertionSort : 0.01 Millisecond
+Time for Sorting 10 elements in MergeSort : 0.008 Millisecond
+Time for Sorting 10 elements in QuickSort : 0.001 Millisecond
+
+
+Time for Sorting 20 elements in BubbleSort : 0.02 Millisecond
+Time for Sorting 20 elements in InsertionSort : 0.019 Millisecond
+Time for Sorting 20 elements in MergeSort : 0.011 Millisecond
+Time for Sorting 20 elements in QuickSort : 0.002 Millisecond
+
+
+Time for Sorting 30 elements in BubbleSort : 0.032 Millisecond
+Time for Sorting 30 elements in InsertionSort : 0.032 Millisecond
+Time for Sorting 30 elements in MergeSort : 0.015 Millisecond
+Time for Sorting 30 elements in QuickSort : 0.004 Millisecond
+
+
+Time for Sorting 40 elements in BubbleSort : 0.048 Millisecond
+Time for Sorting 40 elements in InsertionSort : 0.042 Millisecond
+Time for Sorting 40 elements in MergeSort : 0.018 Millisecond
+Time for Sorting 40 elements in QuickSort : 0.006 Millisecond
+
+
+Time for Sorting 50 elements in BubbleSort : 0.055 Millisecond
+Time for Sorting 50 elements in InsertionSort : 0.052 Millisecond
+Time for Sorting 50 elements in MergeSort : 0.022 Millisecond
+Time for Sorting 50 elements in QuickSort : 0.008 Millisecond
+
+
+Time for Sorting 100 elements in BubbleSort : 0.131 Millisecond
+Time for Sorting 100 elements in InsertionSort : 0.111 Millisecond
+Time for Sorting 100 elements in MergeSort : 0.044 Millisecond
+Time for Sorting 100 elements in QuickSort : 0.016 Millisecond
+
+
+Time for Sorting 200 elements in BubbleSort : 0.336 Millisecond
+Time for Sorting 200 elements in InsertionSort : 0.244 Millisecond
+Time for Sorting 200 elements in MergeSort : 2.643 Millisecond
+Time for Sorting 200 elements in QuickSort : 0.094 Millisecond
+
+
+Time for Sorting 300 elements in BubbleSort : 0.623 Millisecond
+Time for Sorting 300 elements in InsertionSort : 2.813 Millisecond
+Time for Sorting 300 elements in MergeSort : 0.147 Millisecond
+Time for Sorting 300 elements in QuickSort : 0.029 Millisecond
+
+
+Time for Sorting 400 elements in BubbleSort : 3.755 Millisecond
+Time for Sorting 400 elements in InsertionSort : 0.549 Millisecond
+Time for Sorting 400 elements in MergeSort : 0.166 Millisecond
+Time for Sorting 400 elements in QuickSort : 0.036 Millisecond
+
+
+Time for Sorting 500 elements in BubbleSort : 9.942 Millisecond
+Time for Sorting 500 elements in InsertionSort : 0.47 Millisecond
+Time for Sorting 500 elements in MergeSort : 0.138 Millisecond
+Time for Sorting 500 elements in QuickSort : 0.048 Millisecond
+
 

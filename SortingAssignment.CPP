@@ -283,6 +283,7 @@ int main(int argc, char const *argv[])
     cout<<"*************************************************************************************************"<<endl;
     cout<<"Please Check your Program Directory you will find SortingFile.txt that contains all operation time."<<endl;
     cout<<"*************************************************************************************************"<<endl;;
+  testFile<<endl<<endl;  
   testFile.close();
   return 0;
 }
