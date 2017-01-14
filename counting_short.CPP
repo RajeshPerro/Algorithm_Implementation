@@ -35,21 +35,30 @@ int * CountingShort(int *T,int m,int len)
 return Tprime;
 
 }
+int* genRandomArray(int size)
+{
+  int *array;
+  int SIZE = size+10;
+  array = new int[SIZE];
+  srand(time(NULL));
+  for(int i=0;i<size;i++)
+    {
+      array[i]=(rand()%9000 + 1000); 
+    }
+return array;   
+}    
 
 int main(int argc, char const *argv[])
 {
 	int *arr, *sortarr,n,k;
 	cout <<"Array Size : ";
 	cin >> n;
-	arr = (int *)calloc(n,sizeof(int));
+	arr = genRandomArray(n);
+	cout<<"Unsorted List : ";
 	for (int i = 0; i < n; ++i)
 	{
-		/* code */
-		cin>>arr[i];
+		cout<<arr[i]<<" ";
 	}
-
-	//sortarr = (int *)calloc(n,sizeof(int));
-	
 	cout <<"Enter the K : ";
 	cin >>k;
 
