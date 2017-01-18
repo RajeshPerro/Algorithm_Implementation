@@ -213,21 +213,39 @@ int main(int argc, char const *argv[])
 {
     Sorting sort;
     ofstream testFile;
-    ifstream readFile;
     double secs;
-    int num = 20000,k=10010;
+    int k=10010;
+    /*Real data reader code START*/
+    ifstream ReadFile;
+    int SIZE = 20000;
+    string *creditCardNo;
+    int *pinNo;
+    int *tempPinNo;
+    int flag = 0;
+  
+  creditCardNo = new string[SIZE];
+  pinNo = new int[SIZE];
+  tempPinNo = new int[SIZE];
 
-    /*---Reading Pin Numbers From Text File START---*/
-    int *pinArray;
-    pinArray = new int[num];
-    readFile.open("OlsenGangPin.txt");
-    for (int i = 0; i < num; ++i)
+  /* Real Data Reader CODE END*/
+
+
+    /*---Reading CC Numbers and Pin Numbers From Text File START---*/
+    ReadFile.open("CreditCardInfo.txt");
+    for (int i = 0; i < SIZE; i++)
     {
-      readFile>>pinArray[i];
+      ReadFile>>creditCardNo[i]>>pinNo[i];
     }
-    readFile.close();
-    /*---Reading Pin Numbers From Text File START---*/
+    ReadFile.close();
+    /*---Reading CC Numbers and Pin Numbers From Text File END---*/
 
+    /*---Storing Pin Numbers in a tempArray START---*/
+    for (int j = 0; j < SIZE; j++)
+    {
+      tempPinNo[j] = pinNo[j];
+    }
+
+    /*---Storing Pin Numbers in a tempArray END---*/
 
     testFile.open("OlsenGangSort.txt",ofstream::out | std::ofstream::app);
    
@@ -236,7 +254,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t0 = get_timestamp();
     
-    sort.bubbleSort(pinArray,num);
+    sort.bubbleSort(pinNo,SIZE);
     
     timestamp_t t1 = get_timestamp();
     secs+= (t1 - t0) / 1000000.0;
@@ -248,7 +266,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t2 = get_timestamp();
     
-    sort.insertionSort(pinArray,num);
+    sort.insertionSort(pinNo,SIZE);
 
     timestamp_t t3 = get_timestamp();
     secs+= (t3 - t2) / 1000000.0;
@@ -261,7 +279,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t4 = get_timestamp();
 
-    sort.mergeSort(pinArray, 0, num-1);
+    sort.mergeSort(pinNo,0, SIZE-1);
     
     timestamp_t t5 = get_timestamp();
     secs+= (t5 - t4) / 1000000.0;
@@ -273,7 +291,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t6 = get_timestamp();
     
-    sort.quickSort(pinArray, 0, num-1);
+    sort.quickSort(pinNo, 0, SIZE-1);
     
     timestamp_t t7 = get_timestamp();
     secs+= (t7 - t6) / 1000000.0;
@@ -285,7 +303,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t8 = get_timestamp();
     
-    sort.CountingSort(pinArray, k, num);
+    sort.CountingSort(pinNo, k, SIZE);
     
     timestamp_t t9 = get_timestamp();
     secs+= (t9 - t8) / 1000000.0;
@@ -293,11 +311,40 @@ int main(int argc, char const *argv[])
     cout<<"After Performing CountingSort time is : "<<secs;
     cout<<endl<<endl;
 
-
-    cout<<"*************************************************************************************************"<<endl;
-    cout<<"Please Check your Program Directory you will find OlsenGangSort.txt that contains all operation time."<<endl;
-    cout<<"*************************************************************************************************"<<endl;;
   testFile<<endl<<endl;  
+  
+  testFile<<"Credit card number  PIN"<<endl<<"------------------- ----"<<endl;
+  for (int a = 0; a < SIZE; a++)
+  {
+    for (int b = 0; b < SIZE; b++)
+    {
+      if (pinNo[a] == tempPinNo[b] && (pinNo[a-1] != pinNo[a] || flag==0) )
+      {
+        flag = 1;
+        testFile<<creditCardNo[b]<<" ";
+        if (pinNo[a] <= 9)
+        {
+          testFile<<"000";
+        }
+        else if (pinNo[a] > 9 && pinNo[a] <= 99)
+        {
+          testFile<<"00";
+        }
+        else if (pinNo[a] > 99 && pinNo[a] <= 999)
+        {
+          testFile<<"0";
+        }
+        else
+        {
+          
+        }
+        testFile<<tempPinNo[b]<<endl;
+      } 
+    }
+  }
+  cout<<"*************************************************************************************************"<<endl;
+  cout<<"Please Check your Program Directory you will find OlsenGangSort.txt that contains all Data."<<endl;
+  cout<<"*************************************************************************************************"<<endl;
   testFile.close();
   return 0;
 }
