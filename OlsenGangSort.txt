@@ -1,8 +1,8 @@
-Time for Sorting all Pin by using BubbleSort : 1.00013e+06 Millisecond
-Time for Sorting all Pin by using InsertionSort : 0.1 Millisecond
-Time for Sorting all Pin by using MergeSort : 4.11 Millisecond
-Time for Sorting all Pin by using QuickSort : 225.655 Millisecond
-Time for Sorting all Pin by using CountingSort : 0.409 Millisecond
+Time for Sorting all Pin by using BubbleSort : 1.00015e+06 Millisecond
+Time for Sorting all Pin by using InsertionSort : 273.324 Millisecond
+Time for Sorting all Pin by using MergeSort : 6.113 Millisecond
+Time for Sorting all Pin by using QuickSort : 2.361 Millisecond
+Time for Sorting all Pin by using CountingSort : 0.319 Millisecond
 
 
 Credit card number  PIN

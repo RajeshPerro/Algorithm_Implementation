@@ -219,13 +219,18 @@ int main(int argc, char const *argv[])
     ifstream ReadFile;
     int SIZE = 20000;
     string *creditCardNo;
-    int *pinNo;
+    int *pinNo,*pinNoInser,*pinNoMerge,*pinNoQuick,*pinNoCount;
     int *tempPinNo;
     int flag = 0;
   
   creditCardNo = new string[SIZE];
   pinNo = new int[SIZE];
   tempPinNo = new int[SIZE];
+  
+  pinNoInser = new int[SIZE];
+  pinNoMerge = new int[SIZE];
+  pinNoQuick = new int[SIZE];
+  pinNoCount = new int[SIZE];
 
   /* Real Data Reader CODE END*/
 
@@ -244,7 +249,27 @@ int main(int argc, char const *argv[])
     {
       tempPinNo[j] = pinNo[j];
     }
-
+    
+    //coping pin for insertion sort..
+    for (int j = 0; j < SIZE; j++)
+      {
+        pinNoInser[j] = pinNo[j];
+      }
+     //coping pin for Merge sort..
+    for (int j = 0; j < SIZE; j++)
+    {
+      pinNoMerge[j] = pinNo[j];
+    }
+    //coping pin for counting sort..
+    for (int j = 0; j < SIZE; j++)
+    {
+      pinNoCount[j] = pinNo[j];
+    }
+    //coping pin for quick sort..
+    for (int j = 0; j < SIZE; j++)
+    {
+      pinNoQuick[j] = pinNo[j];
+    }  
     /*---Storing Pin Numbers in a tempArray END---*/
 
     testFile.open("OlsenGangSort.txt",ofstream::out | std::ofstream::app);
@@ -263,10 +288,16 @@ int main(int argc, char const *argv[])
     cout<<endl;
 
     /*-->>>>>>>INSERTION SORT<<<<<<<----*/
+    // cout<<"Pintable : ";
+    // for (int i = 0; i < 20; ++i)
+    // {
+    //  cout<<pinNoInser[i]<<" ";
+    // }
+    // cout<<endl;
     secs=0;
     timestamp_t t2 = get_timestamp();
     
-    sort.insertionSort(pinNo,SIZE);
+    sort.insertionSort(pinNoInser,SIZE);
 
     timestamp_t t3 = get_timestamp();
     secs+= (t3 - t2) / 1000000.0;
@@ -275,11 +306,16 @@ int main(int argc, char const *argv[])
     cout<<endl;
 
     /*-->>>>>>>MERGE SORT<<<<<<<----*/
-    
+    // cout<<"Pintable : ";
+    // for (int i = 0; i < 20; ++i)
+    // {
+    //  cout<<pinNoMerge[i]<<" ";
+    // }
+    // cout<<endl;
     secs=0;
     timestamp_t t4 = get_timestamp();
 
-    sort.mergeSort(pinNo,0, SIZE-1);
+    sort.mergeSort(pinNoMerge,0, SIZE-1);
     
     timestamp_t t5 = get_timestamp();
     secs+= (t5 - t4) / 1000000.0;
@@ -291,7 +327,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t6 = get_timestamp();
     
-    sort.quickSort(pinNo, 0, SIZE-1);
+    sort.quickSort(pinNoQuick, 0, SIZE-1);
     
     timestamp_t t7 = get_timestamp();
     secs+= (t7 - t6) / 1000000.0;
@@ -303,7 +339,7 @@ int main(int argc, char const *argv[])
     secs=0;
     timestamp_t t8 = get_timestamp();
     
-    sort.CountingSort(pinNo, k, SIZE);
+    sort.CountingSort(pinNoCount, k, SIZE);
     
     timestamp_t t9 = get_timestamp();
     secs+= (t9 - t8) / 1000000.0;

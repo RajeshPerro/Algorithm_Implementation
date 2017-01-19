@@ -27,3 +27,123 @@ Time for resize(one param) in  Vetki : 0.004 Millisecond
 
 Time for resize(two params) in  Vetki : 0.011 Millisecond
 
+Time for 10 elements in Vetki : 0.042 Millisecond
+Time for 20 elements in Vetki : 0.355 Millisecond
+Time for 30 elements in Vetki : 0.372 Millisecond
+Time for 40 elements in Vetki : 0.376 Millisecond
+Time for 50 elements in Vetki : 0.381 Millisecond
+
+
+Time for 10 elements in StdVector : 0.404 Millisecond
+Time for 20 elements in StdVector : 0.411 Millisecond
+Time for 30 elements in StdVector : 0.415 Millisecond
+Time for 40 elements in StdVector : 0.42 Millisecond
+Time for 50 elements in StdVector : 0.424 Millisecond
+
+
+Time for pop_back() in  StdVector : 0 Millisecond
+Time for 10 elements in Vetki : 0.041 Millisecond
+Time for 20 elements in Vetki : 0.073 Millisecond
+Time for 30 elements in Vetki : 0.079 Millisecond
+Time for 40 elements in Vetki : 0.083 Millisecond
+Time for 50 elements in Vetki : 0.087 Millisecond
+
+
+Time for 10 elements in StdVector : 0.104 Millisecond
+Time for 20 elements in StdVector : 0.11 Millisecond
+Time for 30 elements in StdVector : 0.114 Millisecond
+Time for 40 elements in StdVector : 0.119 Millisecond
+Time for 50 elements in StdVector : 0.124 Millisecond
+
+
+Time for pop_back() in  StdVector : 0.001 Millisecond
+Time for 10 elements in Vetki : 0.381 Millisecond
+Time for 20 elements in Vetki : 0.397 Millisecond
+Time for 30 elements in Vetki : 0.402 Millisecond
+Time for 40 elements in Vetki : 0.406 Millisecond
+Time for 50 elements in Vetki : 0.41 Millisecond
+
+
+Time for 10 elements in StdVector : 0.428 Millisecond
+Time for 20 elements in StdVector : 0.434 Millisecond
+Time for 30 elements in StdVector : 0.439 Millisecond
+Time for 40 elements in StdVector : 0.444 Millisecond
+Time for 50 elements in StdVector : 0.448 Millisecond
+
+
+Time for pop_back() in  StdVector : 0 Millisecond
+Time for 10 elements in Vetki : 0.37 Millisecond
+Time for 20 elements in Vetki : 0.386 Millisecond
+Time for 30 elements in Vetki : 0.391 Millisecond
+Time for 40 elements in Vetki : 0.396 Millisecond
+Time for 50 elements in Vetki : 0.4 Millisecond
+
+
+Time for 10 elements in StdVector : 0.418 Millisecond
+Time for 20 elements in StdVector : 0.424 Millisecond
+Time for 30 elements in StdVector : 0.429 Millisecond
+Time for 40 elements in StdVector : 0.434 Millisecond
+Time for 50 elements in StdVector : 0.439 Millisecond
+
+
+Time for pop_back() in  StdVector : 0 Millisecond
+Time for 10 elements in Vetki : 2.417 Millisecond
+Time for 20 elements in Vetki : 0.389 Millisecond
+Time for 30 elements in Vetki : 0.394 Millisecond
+Time for 40 elements in Vetki : 0.398 Millisecond
+Time for 50 elements in Vetki : 0.402 Millisecond
+
+
+Time for 10 elements in StdVector : 0.419 Millisecond
+Time for 20 elements in StdVector : 0.425 Millisecond
+Time for 30 elements in StdVector : 0.43 Millisecond
+Time for 40 elements in StdVector : 0.435 Millisecond
+Time for 50 elements in StdVector : 0.439 Millisecond
+
+
+Time for pop_back() in  StdVector : 0 Millisecond
+Time for 10 elements in Vetki : 3.68 Millisecond
+Time for 20 elements in Vetki : 0.406 Millisecond
+Time for 30 elements in Vetki : 0.412 Millisecond
+Time for 40 elements in Vetki : 0.416 Millisecond
+Time for 50 elements in Vetki : 0.425 Millisecond
+
+
+Time for 10 elements in StdVector : 0.437 Millisecond
+Time for 20 elements in StdVector : 0.441 Millisecond
+Time for 30 elements in StdVector : 0.457 Millisecond
+Time for 40 elements in StdVector : 0.461 Millisecond
+Time for 50 elements in StdVector : 0.465 Millisecond
+
+
+Time for pop_back() in  StdVector : 0.001 Millisecond
+Time for 10 elements in Vetki : 0.334 Millisecond
+Time for 20 elements in Vetki : 0.307 Millisecond
+Time for 30 elements in Vetki : 0.311 Millisecond
+Time for 40 elements in Vetki : 0.314 Millisecond
+Time for 50 elements in Vetki : 0.317 Millisecond
+
+
+Time for 10 elements in StdVector : 0.324 Millisecond
+Time for 20 elements in StdVector : 0.327 Millisecond
+Time for 30 elements in StdVector : 0.338 Millisecond
+Time for 40 elements in StdVector : 0.341 Millisecond
+Time for 50 elements in StdVector : 0.344 Millisecond
+
+
+Time for pop_back() in  StdVector : 0.001 Millisecond
+Time for 10 elements in Vetki : 0.358 Millisecond
+Time for 20 elements in Vetki : 0.347 Millisecond
+Time for 30 elements in Vetki : 0.351 Millisecond
+Time for 40 elements in Vetki : 0.355 Millisecond
+Time for 50 elements in Vetki : 0.358 Millisecond
+
+
+Time for 10 elements in StdVector : 0.374 Millisecond
+Time for 20 elements in StdVector : 0.379 Millisecond
+Time for 30 elements in StdVector : 0.383 Millisecond
+Time for 40 elements in StdVector : 0.387 Millisecond
+Time for 50 elements in StdVector : 0.391 Millisecond
+
+
+Time for pop_back() in  StdVector : 0 Millisecond
