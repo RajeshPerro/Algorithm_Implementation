@@ -1,3 +1,24 @@
+/* This is the implementation of Boruvka Algorithm in MST 
+by Rajesh Ghosh
+**********-Algorithm-************
+
+proc Boruvkas() : 
+	create a forest F
+	initialize forest F to all vertices
+   while components in F > 1
+	for each component C
+		create edge list L
+	for each vertex V in  C : 
+		find the cheapest edge E from V to a
+		vertes outside C and E to L
+	end for
+	add the cheapest edge in L to F
+	end for
+     end while
+end proc
+
+*/
+
 #include "iostream"
 #include "stack"
 
@@ -24,13 +45,13 @@ struct subset
 };
 
 // find root and make root as parent of current node
-int find(struct subset subsets[], int i)
+int search(struct subset subsets[], int i)
 {
 	
    
     if (subsets[i].parent != i)
     {
-      subsets[i].parent = find(subsets, subsets[i].parent);
+      subsets[i].parent = search(subsets, subsets[i].parent);
     }
  
 return subsets[i].parent;
@@ -38,8 +59,8 @@ return subsets[i].parent;
 
 void Union(struct subset subsets[], int x, int y)
 {
-    int xroot = find(subsets, x);
-    int yroot = find(subsets, y);
+    int xroot = search(subsets, x);
+    int yroot = search(subsets, y);
  
     // Attach smaller rank tree under root of high
     if (subsets[xroot].rank < subsets[yroot].rank)
@@ -100,8 +121,8 @@ void boruvkaMST(struct Graph* graph)
         for (int i=0; i<E; i++)
         {
             // Find components of two corners of current edge
-            int set1 = find(subsets, edge[i].source);
-            int set2 = find(subsets, edge[i].destination);
+            int set1 = search(subsets, edge[i].source);
+            int set2 = search(subsets, edge[i].destination);
  
             // If two corners of current edge belong to same set, ignore current edge
             if (set1 == set2)
@@ -127,8 +148,8 @@ void boruvkaMST(struct Graph* graph)
         {
             if (cheapest[i] != -1)
             {
-                int set1 = find(subsets, edge[cheapest[i]].source);
-                int set2 = find(subsets, edge[cheapest[i]].destination);
+                int set1 = search(subsets, edge[cheapest[i]].source);
+                int set2 = search(subsets, edge[cheapest[i]].destination);
  
                 if (set1 == set2)
                 {
@@ -161,24 +182,24 @@ int main(int argc, char const *argv[])
     cout<<"Enter the number of egdes : ";
     cin>>E;
 
-    struct Graph* graph = createGraph(V, E);
+    struct Graph* mygraph = createGraph(V, E);
  	int j =1;
  	for (int i = 0; i < E; ++i)
  	{	
  		
  		cout<<j<<" no. Source : ";
- 		cin>> graph->edge[i].source;
+ 		cin>> mygraph->edge[i].source;
  		
  		cout<<j<<" no. Destination : ";
- 		cin>>graph->edge[i].destination;
+ 		cin>>mygraph->edge[i].destination;
 
  		cout<<"Weight : ";
- 		cin>>graph->edge[i].weight;
+ 		cin>>mygraph->edge[i].weight;
  		cout<<endl;
  		j++;
 
  	}
  
-    boruvkaMST(graph);
+    boruvkaMST(mygraph);
 	return 0;
 }
